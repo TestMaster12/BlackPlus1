@@ -555,7 +555,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:\n\nLock Links > "..settings.lock_link.."\nLock Flood > "..settings.flood.."\nFlood sensitivity > "..NUM_MSG_MAX.."\nLock Spam > "..settings.lock_spam.."\nLock Arabic/Persian > "..settings.lock_arabic.."\nLock Member > "..settings.lock_member.."\nLock RTL > "..settings.lock_rtl.."\nLock TGservice > "..settings.lock_tgservice.."\nLock Sticker > "..settings.lock_sticker.."\nPublic > "..settings.public.."\nStrict Settings > "..settings.strict
+  local text = "..Tesla Settings..:\n\n..Lock Links.. : "..settings.lock_link.."\n..Lock Flood.. : "..settings.flood.."\n..Flood Status.. : "..NUM_MSG_MAX.."\n..Spam Status.. : "..settings.lock_spam.."\n..Mute Persian.. : "..settings.lock_arabic.."\n..Lock Member.. : "..settings.lock_member.."\n..Lock RTL.. : "..settings.lock_rtl.."\n..Lock TgService.. : "..settings.lock_tgservice.."\n..Sticker Status.. : "..settings.lock_sticker.."\n..Public.. : "..settings.public.."\n..Strict Settings.. : "..settings.strict.."\nVersion:2.5\n\nYour Id: "msg.from.id"\nGroup Id: "msg.to.id"\nChannel:@MegaTesla_Ch
   return text
 end
 
