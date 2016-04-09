@@ -258,21 +258,21 @@ function create_config( )
     "inAdmin"
 
     },
-    sudo_users = {56693692},--Sudo users
+    sudo_users = {87946267,105831687},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[ B L A C K +
+    about_text = [[M e g a T e s l a
 -----------------------------------
-A new bot for manage your Supergroups.
+A New Bot for manage your SuperGroups.
 -----------------------------------
-@Black_CH #Channel
+@MegaTesla_Ch #Channel
 -----------------------------------
-@MehdiHS #developer
+@The_DeSigN3r #developer
 -----------------------------------
-@YflQw #manager
+@ParsaAlemi #manager
 -----------------------------------
-Bot number : --
+Bot number : +12132754480
 -----------------------------------
-Bot version : 6]],
+Bot version : 2.5 ]],
     help_text_realm = [[
 Realm Commands:
 #creategroup [Name]
@@ -513,7 +513,7 @@ other commands :
 (use invite link to invite)
 *Only moderators and owner can use block, ban, unban, newlink, link, setphoto, setname, lock, unlock, setrules, setabout and settings commands
 *Only owner can use res, setowner, promote, demote, and log commands
-Channel : @black_ch
+Channel : @MegaTesla_Ch
 ]],
   }
   serialize_to_file(config, './data/config.lua')
