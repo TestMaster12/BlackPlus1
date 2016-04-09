@@ -1,35 +1,26 @@
 do
 
 function run(msg, matches)
-  return [[B L A C K +
+  return [[M e g a T e s l a
 -----------------------------------
-A new bot for manage your SuperGroups.
+A New Bot for manage your SuperGroups.
 -----------------------------------
-@Black_CH #Channel
+@MegaTesla_Ch #Channel
 -----------------------------------
-@MehdiHS #developer
+@The_DeSigN3r #developer
 -----------------------------------
-@YflQw #manager
+@ParsaAlemi #manager
 -----------------------------------
-@Mr_Surena #manager
+Bot number : +12132754480
 -----------------------------------
-Bot number : +19092545429
------------------------------------
-Bot version : 6.7 ]]
+Bot version : 2.5 ]]
 end
 return {
   description = ".", 
   usage = "use black command",
   patterns = {
-    "^/black$",
-    "^!black$",
-    "^%bLack$",
-    "^$black$",
-   "^#Black$",
-   "^#Black",
-   "^/black$",
-   "^#black$",
-
+    "^[Mm][Ee][Gg][Aa][Tt][Ee][Ss][Ll][Aa]$",
+    "^[!@#$%^&*()/]([Mm][Ee][Gg][Aa][Tt][Ee][Ss][Ll][Aa])$",
   },
   run = run
 }
