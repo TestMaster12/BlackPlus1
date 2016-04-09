@@ -136,7 +136,7 @@ local function run(msg, matches)
 local support_id = msg.from.id
  if matches[1]:lower() == 'id' and msg.to.type == "chat" or msg.to.type == "user" then
     if msg.to.type == "user" then
-      return "Bot ID > |"..msg.to.id.."|\nYour ID > "..msg.from.id
+      return "Bot ID ..|"..msg.to.id.."|..\nYour ID .. |"..msg.from.id.."|..
     end
     if type(msg.reply_id) ~= "nil" then
       local print_name = user_print_name(msg.from):gsub("‮", "")
@@ -194,7 +194,7 @@ local support_id = msg.from.id
 		local receiver = get_receiver(msg)
         savelog(msg.to.id, name.." ["..msg.from.id.."] baned user ".. matches[2])
         ban_user(matches[2], msg.to.id)
-		send_large_msg(receiver, 'Done\nUser Banned!')
+		send_large_msg(receiver, 'All Done!\nUser Banned From All Groups/SuperGroups With @MegaTesla!')
       else
 		local cbres_extra = {
 		chat_id = msg.to.id,
@@ -222,7 +222,7 @@ local support_id = msg.from.id
         	local print_name = user_print_name(msg.from):gsub("‮", "")
 			local name = print_name:gsub("_", "")
         	savelog(msg.to.id, name.." ["..msg.from.id.."] unbaned user ".. matches[2])
-        	return 'Done\nUser unbanned'
+        	return 'All Done!\nUser Banned From All Groups/SuperGroups With @MegaTesla!'
       else
 		local cbres_extra = {
 			chat_id = msg.to.id,
