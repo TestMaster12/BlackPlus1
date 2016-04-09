@@ -15,7 +15,6 @@ false)
  
 return {
   patterns = {
-    "^!!tgservice (.+)$",
     "^Sickout$",
   },
   run = run
