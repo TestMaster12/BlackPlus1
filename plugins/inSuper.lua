@@ -555,7 +555,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "..Tesla Settings..:\n\n..Lock Links.. : "..settings.lock_link.."\n..Lock Flood.. : "..settings.flood.."\n..Flood Status.. : "..NUM_MSG_MAX.."\n..Spam Status.. : "..settings.lock_spam.."\n..Mute Persian.. : "..settings.lock_arabic.."\n..Lock Member.. : "..settings.lock_member.."\n..Lock RTL.. : "..settings.lock_rtl.."\n..Lock TgService.. : "..settings.lock_tgservice.."\n..Sticker Status.. : "..settings.lock_sticker.."\n..Public.. : "..settings.public.."\n..Strict Settings.. : "..settings.strict.."\nVersion:2.5\n\nYour Id: "msg.from.id"\nGroup Id: "msg.to.id"\nChannel:@MegaTesla_Ch"
+  local text = "..Tesla Settings..:\n\n..Lock Links.. : "..settings.lock_link.."\n..Lock Flood.. : "..settings.flood.."\n..Flood Status.. : "..NUM_MSG_MAX.."\n..Spam Status.. : "..settings.lock_spam.."\n..Mute Persian.. : "..settings.lock_arabic.."\n..Lock Member.. : "..settings.lock_member.."\n..Lock RTL.. : "..settings.lock_rtl.."\n..Lock TgService.. : "..settings.lock_tgservice.."\n..Sticker Status.. : "..settings.lock_sticker.."\n..Public.. : "..settings.public.."\n..Strict Settings.. : "..settings.strict
   return text
 end
 
