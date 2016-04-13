@@ -116,10 +116,10 @@ local function kick_ban_res(extra, success, result)
 			send_large_msg(receiver, "You can't ban mods/owner/admins")
 			return
         end
-        send_large_msg(receiver, 'Done \nUser Banned')
+        send_large_msg(receiver, 'All Done!\nUser Banned From All Groups/SuperGroups With @MegaTesla!')
 		ban_user(member_id, chat_id)
       elseif get_cmd == 'unban' then
-        send_large_msg(receiver, 'Done\nUser Unbanned')
+        send_large_msg(receiver, 'All Done!\nUser Un-Banned From All Groups/SuperGroups With @MegaTesla!')
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'Done\n User Unbanned'
@@ -136,7 +136,7 @@ local function run(msg, matches)
 local support_id = msg.from.id
  if matches[1]:lower() == 'id' and msg.to.type == "chat" or msg.to.type == "user" then
     if msg.to.type == "user" then
-      return "Bot ID ..|"..msg.to.id.."|..\nYour ID .. |"..msg.from.id.."|..
+      return "Bot ID ..|"..msg.to.id.."|..\nYour ID .. |"..msg.from.id.."|.."
     end
     if type(msg.reply_id) ~= "nil" then
       local print_name = user_print_name(msg.from):gsub("‮", "")
@@ -222,7 +222,7 @@ local support_id = msg.from.id
         	local print_name = user_print_name(msg.from):gsub("‮", "")
 			local name = print_name:gsub("_", "")
         	savelog(msg.to.id, name.." ["..msg.from.id.."] unbaned user ".. matches[2])
-        	return 'All Done!\nUser Banned From All Groups/SuperGroups With @MegaTesla!'
+        	return 'All Done!\nUser Un-Banned From All Groups/SuperGroups With @MegaTesla!'
       else
 		local cbres_extra = {
 			chat_id = msg.to.id,
