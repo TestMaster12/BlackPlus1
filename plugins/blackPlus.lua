@@ -115,7 +115,7 @@ local function run(msg, matches)
 	    local receiver = get_receiver(msg)
         local chat_id = msg.to.id
         local name = user_print_name(msg.from)
-        savelog(msg.to.id, name.." ["..msg.from.id.."] requested group stats ")
+        savelog(msg.to.id, name.." ["..msg.from.id.."] requested groups stats ")
         return chat_stats(receiver, chat_id)
       else
         return
