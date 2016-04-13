@@ -555,7 +555,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "..Tesla Settings..:\n\n..Lock Links.. : "..settings.lock_link.."\n..Lock Flood.. : "..settings.flood.."\n..Flood Status.. : "..NUM_MSG_MAX.."\n..Spam Status.. : "..settings.lock_spam.."\n..Mute Persian.. : "..settings.lock_arabic.."\n..Lock Member.. : "..settings.lock_member.."\n..Lock RTL.. : "..settings.lock_rtl.."\n..Lock TgService.. : "..settings.lock_tgservice.."\n..Sticker Status.. : "..settings.lock_sticker.."\n..Public.. : "..settings.public.."\n..Strict Settings.. : "..settings.strict
+  local text = "> Mega|Tesla Settings:\n\n> Lock Links  : "..settings.lock_link.."\n> Lock Flood  : "..settings.flood.."\n> Flood Status  : "..NUM_MSG_MAX.."\n\n> Mute Mod:\n\n> Mute Spam  : "..settings.lock_spam.."\n> Mute Persian : "..settings.lock_arabic.."\n> Mute Sticker  : "..settings.lock_sticker.."\n\n> Share Lock:\n\n> Share Contacts: "..settings.lock_contacts.."\n\n> Lock Member  : "..settings.lock_member.."\n> Lock RTL  : "..settings.lock_rtl.."\n> Lock TgService  : "..settings.lock_tgservice.."\n\n> Public  : "..settings.public.."\n> Strict Settings  : "..settings.strict.."\n> Group Type: SuperGroup\n> Bot Version: 2.5\n\n> Channel: @MegaTesla_Ch"
   return text
 end
 
@@ -1949,7 +1949,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Message /superhelp to @BlackPlus in private for SuperGroup help."
+			text = "Message /superhelp to @MegaTesla in private for SuperGroup help."
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
