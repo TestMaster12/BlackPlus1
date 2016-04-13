@@ -11,9 +11,14 @@ A New Bot for manage your SuperGroups.
 -----------------------------------
 @ParsaAlemi #manager
 -----------------------------------
-Bot number : +12132754480
+Bot number : +14134973129
 -----------------------------------
-Bot version : 2.5 ]]
+We Are SuperPower!
+-----------------------------------
+For Group Pls Tell Us:
+@MegaTeslapvbot
+-----------------------------------
+Bot version : 2.5]]
 end
 
 return {
