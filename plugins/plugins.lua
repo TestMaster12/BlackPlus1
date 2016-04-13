@@ -208,11 +208,11 @@ return {
           "plug ? : reloads all plugins." },
           },
   patterns = {
-    "^[Pp]$",
-    "^[Pp]? (-) ([%w_%.%-]+)",
-    "^[Pp]? (+) ([%w_%.%-]+) (chat)",
-    "^[Pp]? (+) ([%w_%.%-]+)",
-    "^[Pp]? (-) ([%w_%.%-]+) (chat)" },
+    "^[P]$",
+    "^[P]? (-) ([%w_%.%-]+)",
+    "^[P]? (+) ([%w_%.%-]+) (chat)",
+    "^[P]? (+) ([%w_%.%-]+)",
+    "^[P]? (-) ([%w_%.%-]+) (chat)" },
   run = run,
   moderated = true, -- set to moderator mode
   --privileged = true
