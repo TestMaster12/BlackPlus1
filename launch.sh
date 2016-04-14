@@ -112,7 +112,6 @@ else
     exit 1
   fi
   
-  #Adding some color. By @MehdiHS
    echo -e "\033[38;5;208m"
    echo -e "      > Channel : @Black_CH                     "
    echo -e "      > Developer : @MehdiHS                    "
