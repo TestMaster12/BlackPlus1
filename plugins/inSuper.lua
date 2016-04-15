@@ -29,6 +29,7 @@ local function check_member_super(cb_extra, success, result)
 		  lock_tgservice = 'yes',
 		  lock_contacts = 'no',
 		  lock_mci = 'no',
+		  lock_fosh = 'no',
 		  strict = 'no'
         }
       }
@@ -457,6 +458,34 @@ local function unlock_group_mci(msg, data, target)
   end
 end
 
+local function lock_group_fosh(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_fosh_lock = data[tostring(target)]['settings']['lock_fosh']
+  if group_fosh_lock == 'yes' then
+    return 'Sending BadWords Is Already Locked!'
+  else
+    data[tostring(target)]['settings']['lock_fosh'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'Sending BadWords Won't Allowed!'
+  end
+end
+
+local function unlock_group_fosh(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_fosh_lock = data[tostring(target)]['settings']['lock_fosh']
+  if group_fosh_lock == 'no' then
+    return 'Sending BadWords Is Already Allowed!'
+  else
+    data[tostring(target)]['settings']['lock_fosh'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'Sending BadWords Was Unlocked!'
+  end
+end
+
 local function enable_strict_rules(msg, data, target)
   if not is_momod(msg) then
     return
@@ -584,7 +613,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "> Tesla Settings:\n\n> Lock Links  : "..settings.lock_link.."\n> Lock Flood  : "..settings.flood.."\n> Flood Status  : "..NUM_MSG_MAX.."\n\nMute Mod:\n> Mute Spam  : "..settings.lock_spam.."\n> Mute Persian : "..settings.lock_arabic.."\n> Mute Sticker  : "..settings.lock_sticker.."\n\nShare Lock:\n> Share Contacts: "..settings.lock_contacts.." \n\n> Lock Mci: "..settings.lock_mci.."\n\n> Lock Member  : "..settings.lock_member.."\n> Lock RTL  : "..settings.lock_rtl.."\n> Lock TgService  : "..settings.lock_tgservice.."\n\n> Public  : "..settings.public.."\n> Strict Settings  : "..settings.strict.."\n> Group Type: SuperGroup\n> Bot Version: 2.5\n\n> Channel: @MegaTesla_Ch"
+  local text = "> Tesla Settings:\n\n> Lock Links  : "..settings.lock_link.."\n> Lock Flood  : "..settings.flood.."\n> Flood Status  : "..NUM_MSG_MAX.."\n\nMute Mod:\n> Mute Spam  : "..settings.lock_spam.."\n> Mute Persian : "..settings.lock_arabic.."\n> Mute Sticker  : "..settings.lock_sticker.."\n\nShare Lock:\n> Share Contacts: "..settings.lock_contacts.." \n\n> Lock Mci: "..settings.lock_mci.."\n> Lock Fosh: "..settings.lock_fosh.."\n\n> Lock Member  : "..settings.lock_member.."\n> Lock RTL  : "..settings.lock_rtl.."\n> Lock TgService  : "..settings.lock_tgservice.."\n\n> Public  : "..settings.public.."\n> Strict Settings  : "..settings.strict.."\n> Group Type: SuperGroup\n> Bot Version: 2.5\n\n> Channel: @MegaTesla_Ch"
   return text
 end
 
@@ -1688,7 +1717,7 @@ local function run(msg, matches)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked rtl chars. in names")
 				return lock_group_rtl(msg, data, target)
 			end
-			if matches[2] == 'tgservice' then
+			if matches[2] == 'tg' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked Tgservice Actions")
 				return lock_group_tgservice(msg, data, target)
 			end
@@ -1703,6 +1732,10 @@ local function run(msg, matches)
 				if matches[2] == 'mci' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked mci posting")
 				return lock_group_mci(msg, data, target)
+			end
+				if matches[2] == 'fosh' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked fosh posting")
+				return lock_group_fosh(msg, data, target)
 			end
 			if matches[2] == 'strict' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked enabled strict settings")
@@ -1736,7 +1769,7 @@ local function run(msg, matches)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked RTL chars. in names")
 				return unlock_group_rtl(msg, data, target)
 			end
-				if matches[2] == 'tgservice' then
+				if matches[2] == 'tg' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked tgservice actions")
 				return unlock_group_tgservice(msg, data, target)
 			end
@@ -1751,6 +1784,10 @@ local function run(msg, matches)
 				if matches[2] == 'mci' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked mci posting")
 				return unlock_group_mci(msg, data, target)
+			end
+				if matches[2] == 'fosh' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked fosh posting")
+				return unlock_group_fosh(msg, data, target)
 			end
 			if matches[2] == 'strict' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked disabled strict settings")
