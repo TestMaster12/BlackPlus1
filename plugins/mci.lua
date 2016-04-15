@@ -28,6 +28,8 @@ local function run(msg, matches)
 		local channel_id = msg.to.id
 		local user_id = msg.from.id
 			kick_user(user_id, channel_id)
+			else
+			delete_msg(msg.id,ok_cb,false)
 		end
 		antimci[msg.from.id] = true
     end
