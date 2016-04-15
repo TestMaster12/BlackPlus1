@@ -19,6 +19,7 @@ local text = matches[1]
   local receiver = get_receiver(msg)
   local file = download_to_file(url,'Hextor.ogg')
       send_audio('channel#id'..msg.to.id, file, ok_cb , false)
+      reply_msg(msg.id, send_audio, ok_cb, false)
 end
 end
   end
