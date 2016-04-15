@@ -21,7 +21,8 @@ local function run(msg, matches)
 		if username and is_super_group(msg) then
 			send_large_msg(receiver , "User > @"..msg.from.username.." Hamrah Aval Ads Was Not Allowed Here!\n\nیوزر @"..msg.from.username.." تبلیغات همراه اول ممنوع بود!)"
 		else
-			send_large_msg(receiver , "Name > : "..name.."["..msg.from.id.."] Hamrah Aval Ads Was Not Allowed Here!\n\nوضعیت: فرد اخراج شد!)"		end
+			send_large_msg(receiver , "Name > : "..name.."["..msg.from.id.."] Hamrah Aval Ads Was Not Allowed Here!\n\nوضعیت: فرد اخراج شد!)"
+		end
 		local name = user_print_name(msg.from)
 		savelog(msg.to.id, name.." ["..msg.from.id.."] kicked (arabic was locked) ")
 		local channel_id = msg.to.id
