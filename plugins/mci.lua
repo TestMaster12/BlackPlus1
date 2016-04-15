@@ -27,6 +27,7 @@ local function run(msg, matches)
 		savelog(msg.to.id, name.." ["..msg.from.id.."] kicked (arabic was locked) ")
 		local channel_id = msg.to.id
 		local user_id = msg.from.id
+		        delete_msg(msg.id,ok_cb,false)
 			kick_user(user_id, channel_id)
 		end
 		antimci[msg.from.id] = true
