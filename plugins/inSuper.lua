@@ -429,9 +429,13 @@ local function unlock_group_contacts(msg, data, target)
   end
 end
 
-local group_mci_lock = data[tostring(target)]['settings']['lock_mci']
+local function lock_group_mci(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_mci_lock = data[tostring(target)]['settings']['lock_mci']
   if group_mci_lock == 'yes' then
-    return 'Mci Ads Has Been Locked!'
+    return 'Mci Ads Is Already Locked!'
   else
     data[tostring(target)]['settings']['lock_mci'] = 'yes'
     save_data(_config.moderation.data, data)
@@ -449,13 +453,7 @@ local function unlock_group_mci(msg, data, target)
   else
     data[tostring(target)]['settings']['lock_mci'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Mci Ads Has Been Unlocked!'']
-  if group_mci_lock == 'yes' then
-    return 'Mci Ads Is Already Locked!'
-  else
-    data[tostring(target)]['settings']['lock_mci'] = 'yes'
-    save_data(_config.moderation.data, data)
-    return 'Mci Ads Has Been Locked!'
+    return 'Mci Ads Has Been Unlocked!'
   end
 end
 
