@@ -28,6 +28,7 @@ local function check_member_super(cb_extra, success, result)
 		  lock_rtl = 'no',
 		  lock_tgservice = 'yes',
 		  lock_contacts = 'no',
+		  lock_mci = 'no',
 		  strict = 'no'
         }
       }
@@ -425,6 +426,50 @@ local function unlock_group_contacts(msg, data, target)
     data[tostring(target)]['settings']['lock_contacts'] = 'no'
     save_data(_config.moderation.data, data)
     return '*Contact posting has been unlocked'
+  end
+end
+
+local group_mci_lock = data[tostring(target)]['settings']['lock_mci']
+  if group_mci_lock == 'yes' then
+    return 'Mci Ads Has Been Locked!'
+  else
+    data[tostring(target)]['settings']['lock_mci'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'Mci Ads Has Been Locked!'
+  end
+end
+
+local function unlock_group_mci(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_mci_lock = data[tostring(target)]['settings']['lock_mci']
+  if group_mci_lock == 'no' then
+    return 'Mci Ads Is Already Unlocked!'
+  else
+    data[tostring(target)]['settings']['lock_mci'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'Mci Ads Has Been Unlocked!'']
+  if group_mci_lock == 'yes' then
+    return 'Mci Ads Is Already Locked!'
+  else
+    data[tostring(target)]['settings']['lock_mci'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'Mci Ads Has Been Locked!'
+  end
+end
+
+local function unlock_group_contacts(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_contacts_lock = data[tostring(target)]['settings']['lock_mci']
+  if group_contacts_lock == 'no' then
+    return 'Mci Ads Is Already Unlocked!'
+  else
+    data[tostring(target)]['settings']['lock_contacts'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'Mci Ads Has Been Unlocked!'
   end
 end
 
@@ -1670,6 +1715,10 @@ local function run(msg, matches)
 			if matches[2] == 'contacts' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked contact posting")
 				return lock_group_contacts(msg, data, target)
+		    end
+				if matches[2] == 'mci' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked mci posting")
+				return lock_group_mci(msg, data, target)
 			end
 			if matches[2] == 'strict' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked enabled strict settings")
@@ -1714,6 +1763,10 @@ local function run(msg, matches)
 			if matches[2] == 'contacts' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked contact posting")
 				return unlock_group_contacts(msg, data, target)
+			end
+				if matches[2] == 'mci' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked mci posting")
+				return unlock_group_mci(msg, data, target)
 			end
 			if matches[2] == 'strict' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked disabled strict settings")
