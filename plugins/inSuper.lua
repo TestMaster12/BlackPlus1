@@ -30,6 +30,7 @@ local function check_member_super(cb_extra, success, result)
 		  lock_contacts = 'no',
 		  lock_mci = 'no',
 		  lock_fosh = 'no',
+		  lock_fwd = 'no',
 		  strict = 'no'
         }
       }
@@ -486,6 +487,35 @@ local function unlock_group_fosh(msg, data, target)
   end
 end
 
+
+local function lock_group_fwd(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
+  if group_fwd_lock == 'yes' then
+    return 'Forward Is Already Locked!'
+  else
+    data[tostring(target)]['settings']['lock_fwd'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'Forward Won\'t Allowed!'
+  end
+end
+
+local function unlock_group_fwd(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
+  if group_fwd_lock == 'no' then
+    return 'Forward Message Is Already Allowed!'
+  else
+    data[tostring(target)]['settings']['lock_fwd'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'Forwarding Was Unlocked!'
+  end
+end
+
 local function enable_strict_rules(msg, data, target)
   if not is_momod(msg) then
     return
@@ -613,7 +643,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "> Tesla Settings:\n\n> Lock Links  : "..settings.lock_link.."\n> Lock Flood  : "..settings.flood.."\n> Flood Status  : "..NUM_MSG_MAX.."\n\nMute Mod:\n> Mute Spam  : "..settings.lock_spam.."\n> Mute Persian : "..settings.lock_arabic.."\n> Mute Sticker  : "..settings.lock_sticker.."\n\nShare Lock:\n> Share Contacts: "..settings.lock_contacts.." \n\n> Lock Mci: "..settings.lock_mci.."\n> Lock Fosh: "..settings.lock_fosh.."\n\n> Lock Member  : "..settings.lock_member.."\n> Lock RTL  : "..settings.lock_rtl.."\n> Lock TgService  : "..settings.lock_tgservice.."\n\n> Public  : "..settings.public.."\n> Strict Settings  : "..settings.strict.."\n> Group Type: SuperGroup\n> Bot Version: 2.5\n\n> Channel: @MegaTesla_Ch"
+  local text = "> Tesla Settings:\n\n> Lock Links  : "..settings.lock_link.."\n> Lock Flood  : "..settings.flood.."\n> Flood Status  : "..NUM_MSG_MAX.."\n\nMute Mod:\n> Mute Spam  : "..settings.lock_spam.."\n> Mute Persian : "..settings.lock_arabic.."\n> Mute Sticker  : "..settings.lock_sticker.."\n\nShare Lock:\n> Share Contacts: "..settings.lock_contacts.." \n\n> Lock Mci: "..settings.lock_mci.."\n> Lock Fosh: "..settings.lock_fosh.."\n> Lock Forward: "..settings.lock_fwd.."\n\n> Lock Member  : "..settings.lock_member.."\n> Lock RTL  : "..settings.lock_rtl.."\n> Lock TgService  : "..settings.lock_tgservice.."\n\n> Public  : "..settings.public.."\n> Strict Settings  : "..settings.strict.."\n> Group Type: SuperGroup\n> Bot Version: 2.5\n\n> Channel: @MegaTesla_Ch"
   return text
 end
 
@@ -1737,6 +1767,10 @@ local function run(msg, matches)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked fosh posting")
 				return lock_group_fosh(msg, data, target)
 			end
+			        if matches[2] == 'forward' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked forward posting")
+				return lock_group_fwd(msg, data, target)
+			end
 			if matches[2] == 'strict' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked enabled strict settings")
 				return enable_strict_rules(msg, data, target)
@@ -1788,6 +1822,10 @@ local function run(msg, matches)
 				if matches[2] == 'fosh' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked fosh posting")
 				return unlock_group_fosh(msg, data, target)
+			end
+			        if matches[2] == 'forward' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked forward posting")
+				return unlock_group_fwd(msg, data, target)
 			end
 			if matches[2] == 'strict' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked disabled strict settings")
