@@ -468,7 +468,7 @@ local function lock_group_fosh(msg, data, target)
   else
     data[tostring(target)]['settings']['lock_fosh'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Sending BadWords Won't Allowed!'
+    return 'Sending BadWords Won\t Allowed!'
   end
 end
 
