@@ -42,7 +42,7 @@ local function list_all_plugins(only_enabled)
       text = text..nsum..'. '..v..'  '..status..'\n'
     end
   end
-  local text = '____________________________\n'..text..'____________________________\nEnabled Plugins: '..nact..'\nDisabled Plugins:'..nsum-nact..'\nAll Plugins: '..nsum..'\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾'
+  local text = '____________________________\n'..text..'____________________________\n|پلاگین های |فعال: '..nact..'\n|پلاگین های |غیرفعال:'..nsum-nact..'\nکل پلاگین ها: '..nsum..'\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾'
   return text
 end
 
@@ -67,7 +67,7 @@ local function list_plugins(only_enabled)
       text = text..v..'  '..status..'\n'
     end
   end
-  local text = '____________________________\n'..text..'____________________________\nEnabled Plugins: '..nact..'\nAll Plugins: '..nsum..'\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾'
+  local text = '____________________________\n'..text..'____________________________\n|پلاگین های |فعال: '..nact..'\nکل پلاگین ها: '..nsum..'\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾'
   return text
 end
 
