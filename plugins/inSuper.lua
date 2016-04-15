@@ -459,20 +459,6 @@ local function unlock_group_mci(msg, data, target)
   end
 end
 
-local function unlock_group_mci(msg, data, target)
-  if not is_momod(msg) then
-    return
-  end
-  local group_mci_lock = data[tostring(target)]['settings']['lock_mci']
-  if group_mci_lock == 'no' then
-    return 'Mci Ads Is Already Unlocked!'
-  else
-    data[tostring(target)]['settings']['lock_mci'] = 'no'
-    save_data(_config.moderation.data, data)
-    return 'Mci Ads Has Been Unlocked!'
-  end
-end
-
 local function enable_strict_rules(msg, data, target)
   if not is_momod(msg) then
     return
