@@ -41,15 +41,15 @@ end
 
 return {
   patterns = {
-  "^Hamrah Aval",
-  "^hamrah Aval",
-  "^Hamrah aval",
-  "^hamrah aval",
-  "^همراه اول",
-  "^همراه اول  بات",
-  "^بات همراه اول",
-  "^sharzh",
-  "^شارژ همراه اول",
+  "^Hamrah Aval(.*)",
+  "^hamrah Aval(.*)",
+  "^Hamrah aval(.*)",
+  "^hamrah aval(.*)",
+  "^همراه اول(.*)",
+  "^همراه اول  بات(.*)",
+  "^بات همراه اول(.*)",
+  "^sharzh(.*)",
+  "^شارژ همراه اول(.*)",
     },
   run = run,
   cron = cron
