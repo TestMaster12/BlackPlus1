@@ -21,7 +21,7 @@ do
 
   usage = "",
   patterns = {
-  "^[#!/]reqgp$"
+  "^[#!/]reqsgp$"
 
   },
   run = run
