@@ -14,7 +14,7 @@ local function run(msg, matches)
       if antifwd[msg.from.id] == true then 
         return
       end
-	  if msg.type == 'fwd' then
+	  if msg.fwd.from then
 		local receiver = get_receiver(msg)
 		local username = msg.from.username
 		local name = msg.from.first_name
