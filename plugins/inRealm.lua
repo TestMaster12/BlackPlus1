@@ -4,7 +4,6 @@ do
 
 local function create_group(msg)
      -- superuser and admins only (because sudo are always has privilege)
-    if is_sudo(msg) or is_realm(msg) and is_admin1(msg) then
 		if matches[1] == 'csgp' and matches[2] then
           create_group(msg, matches[2], 'channel')
         end
