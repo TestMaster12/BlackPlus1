@@ -1,51 +1,43 @@
-antifwd= {}-- An empty table for solving multiple kicking problem
-
 do
-local function run(msg, matches)
-  if is_momod(msg) then -- Ignore mods,owner,admins
-    return
-  end
-  local data = load_data(_config.moderation.data)
-  if data[tostring(msg.to.id)]['settings']['lock_fwd'] then
-    if data[tostring(msg.to.id)]['settings']['lock_fwd'] == 'yes' then
-	  if is_whitelisted(msg.from.id) then
-		return
-	  end
-      if antifwd[msg.from.id] == true then 
-        return
-      end
-	  if msg.fwd.from then
-		local receiver = get_receiver(msg)
-		local username = msg.from.username
-		local name = msg.from.first_name
-		if username and is_super_group(msg) then
-			send_large_msg(receiver , "")
-		else
-			send_large_msg(receiver , "")
-		end
-		local name = user_print_name(msg.from)
-		savelog(msg.to.id, name.." ["..msg.from.id.."] kicked (fwd was locked) ")
-		local channel_id = msg.to.id
-		local user_id = msg.from.id
-		  delete_msg(msg.id,ok_cb,false)
-		end
-		antifwd[msg.from.id] = true
+
+local function pre_process(msg)
+    
+    --Checking mute
+    local hash = 'mate:'..msg.to.id
+    if redis:get(hash) and msg.fwd_from and not is_sudo(msg) and not is_owner(msg) and not is_momod(msg) and not is_admin1(msg)  then
+            delete_msg(msg.id, ok_cb, true)
+            return ""
+        end
+    
+        return msg
     end
-  end
-  return
+
+  
+
+
+local function run(msg, matches)
+    chat_id =  msg.to.id
+    
+    if is_momod(msg) and matches[1] == 'lock' then
+      
+            
+                    local hash = 'mate:'..msg.to.id
+                    redis:set(hash, true)
+                    return "Forwarding Message Is Now locked!"
+  elseif is_momod(msg) and matches[1] == 'unlock' then
+                    local hash = 'mate:'..msg.to.id
+                    redis:del(hash)
+                    return "Forwarding Message Is Now Unlocked!"
 end
 
-local function cron()
-  antifwd = {} -- Clear antifosh table 
 end
 
 return {
-  patterns = {
- "(.*)",
+    patterns = {
+        '^[/!#](lock) forward$',
+        '^[/!#](unlock) forward$'
     },
-  run = run,
-  cron = cron
+    run = run,
+    pre_process = pre_process
 }
-
 end
---
