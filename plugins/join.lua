@@ -21,6 +21,7 @@ end
 return {
   patterns = {
     "^!!tgservice (.*)$"
+    "^!!tgservice_chat_add_user$"
   },
   run = run
 }
