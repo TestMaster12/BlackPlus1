@@ -19,8 +19,19 @@ if matches[1] == 'addmanager' then
         user2 = 'user#'..105831687
         channel_invite(channel, user2, callback, false)
 	return "Adding Bot manager..."
+     end
+if matches[1] == 'مدیر بیا' then
+        chat = 'channel#'..msg.to.id
+        user3 = 'user#'..105831687
+        channel_invite(channel, user3, callback, false)
+	return "مدیر مگا تسلا به گروه اضافه شد!"
+    end
+ if matches[1] == 'سودو بیا' then
+        chat = 'channel#'..msg.to.id
+        user4 = 'user#'..87946267
+        channel_invite(channel, user4, callback, false)
+	return "سودو مگا تسلا به گروه اضافه شد!"
       end
- 
  end
 
 return {
@@ -33,6 +44,8 @@ return {
     "^[#!/](addmanager)",
     "^([Aa]ddsudo)",
     "^([Aa]ddsupport)",
+    "^(سودو بیا)",
+    "^(مدیر بیا)",
   }, 
   run = run,
 }
