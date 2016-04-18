@@ -104,7 +104,7 @@ return {
    "^([!/])(remword) (.*)$",
     "^([!/])(badwords)$",
     "^([!/])(clearbadwords)$",
-"^(.+)$",
+"(.+)$",
 	   
   },
   run = run
