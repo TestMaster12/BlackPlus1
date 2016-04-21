@@ -1,6 +1,5 @@
 local function run(msg)
-    if msg.text == "سلام" then
-    if is_sudo(msg) then
+    if msg.text == "سلام" and is_sudo(msg) then
         return "سلام بابایی!"
     end
 end
