@@ -23,22 +23,6 @@ if msg.text == "سلام" and not is_momod(msg) and not is_admin1(msg) and not i
 local text = "سلام به روی ماهت😊️"
 	reply_msg(reply_id, text, ok_cb, false)
 end
-if msg.text == "بای" or "خدافظ" or "خداحافظ" and is_sudo(msg) then
-local text = "خدافظ بابا جونم❤،زود بیا👋☺️"
-	reply_msg(reply_id, text, ok_cb, false)
-end
-if msg.text == "بای" or "خدافظ" or "خداحافظ" and is_admin1(msg) and not is_sudo(msg) then
-local text = " 👋زود برگرد پیشم😢بابای مامان جونم️"
-	reply_msg(reply_id, text, ok_cb, false)
-end
-if msg.text == "بای" or "خدافظ" or "خداحافظ" and is_momod(msg) and not is_admin1(msg) then
-local text = "خدا به همرات!👋️"
-	reply_msg(reply_id, text, ok_cb, false)
-end
-if msg.text == "بای" or "خدافظ" or "خداحافظ" and not is_momod(msg) and not is_admin1(msg) and not is_sudo(msg) then
-local text = "به سلامت😊️"
-	reply_msg(reply_id, text, ok_cb, false)
-end
 if msg.text == "hello" then
 	return "Hi honey"
 end
