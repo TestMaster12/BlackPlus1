@@ -65,6 +65,7 @@ return {
 		"^[Bb]ye$",
 		"^?$",
 		"^[Ss]alam$",
+		"^سلام$",
 		}, 
 	run = run,
     --privileged = true,
