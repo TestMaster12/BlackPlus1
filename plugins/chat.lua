@@ -19,6 +19,10 @@ if msg.text == "سلام" and is_momod(msg) and not is_admin1(msg) then
 local text = "سلام 😻خوش اومدی!👋️"
 	reply_msg(reply_id, text, ok_cb, false)
 end
+if msg.text == "سلام" and not is_momod(msg) and not is_admin1(msg) and not is_sudo(msg) then
+local text = "سلام به روی ماهت😊️"
+	reply_msg(reply_id, text, ok_cb, false)
+end
 if msg.text == "hello" then
 	return "Hi honey"
 end
