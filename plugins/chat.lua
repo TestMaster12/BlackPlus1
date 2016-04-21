@@ -15,7 +15,7 @@ if msg.text == "سلام" and is_admin1(msg) then
 local text = "سلام مامان جونم😻خوش اومدی!☺️"
 	reply_msg(reply_id, text, ok_cb, false)
 end
-if msg.text == "سلام" and is_momod2(msg) and not is_admin1(msg) then
+if msg.text == "سلام" and is_momod(msg) and not is_admin1(msg) then
 local text = "سلام 😻خوش اومدی!☺️"
 	reply_msg(reply_id, text, ok_cb, false)
 end
