@@ -3,8 +3,9 @@ do
 function run(msg, matches)
 local reply_id = msg['id']
 local text = 'سلام بابایی جونم😍'
+local m = '87946267'
 if matches[1] == 'salam' or 'سلام' or 'slm' or 'i' then
-    if msg.to.id '87946267' then
+    if (tonumber) 'm'  then
 reply_msg(reply_id, text, ok_cb, false)
 end
 end 
