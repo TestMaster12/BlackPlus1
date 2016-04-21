@@ -7,8 +7,9 @@ if msg.text == "Hi" and is_sudo(msg) then
 local text = "Hello Daddy"
 	reply_msg(reply_id, text, ok_cb, false)
 end
-if msg.text == "Hello" then
-	return "Hi bb"
+if msg.text == "سلام" and is_sudo(msg) then
+local text = "،خسته نباشی☺️❤️ سلام باباجوونم"
+	reply_msg(reply_id, text, ok_cb, false)
 end
 if msg.text == "hello" then
 	return "Hi honey"
