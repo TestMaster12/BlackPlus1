@@ -1,9 +1,11 @@
-local function run(msg)
+function run(msg)
+local reply_id = msg['id']
 if msg.text == "hi" then
 	return "Hello bb"
 end
 if msg.text == "Hi" and is_sudo(msg) then
-	return "Hello Daddy"
+local text = "Hello Daddy"
+	reply_msg(reply_id, text, ok_cb, false)
 end
 if msg.text == "Hello" then
 	return "Hi bb"
