@@ -23,7 +23,7 @@ if msg.text == "سلام" and not is_momod(msg) and not is_admin1(msg) and not i
 local text = "سلام به روی ماهت😊️"
 	reply_msg(reply_id, text, ok_cb, false)
 end
-if msg.text == "سلام" and not is_momod(msg) and not is_admin1(msg) and not is_sudo(msg) and is_support(msg) then
+if msg.text == "سلام" and is_support(msg) and not is_momod(msg) and not is_admin1(msg) and not is_sudo(msg) then
 local text = "سلام خاله جونم😻خوش اومدی!☺️"
 	reply_msg(reply_id, text, ok_cb, false)
 end
