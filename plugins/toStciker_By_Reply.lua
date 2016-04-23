@@ -1,7 +1,7 @@
 local function toimage(msg, success, result)
   local receiver = get_receiver(msg)
   if success then
-    local file = '/root/blackplus/data/stickers/'..msg.from.id..'.jpg'
+    local file = '/blackplus1/data/stickers/'..msg.from.id..'.jpg'
     print('File downloaded to:', result)
     os.rename(result, file)
     print('File moved to:', file)
@@ -20,14 +20,14 @@ local function run(msg,matches)
       		if redis:set("sticker:photo", "waiting") then
       		end
   	end
-      if matches[1] == "toimage" then
+      if matches[1] == "عکس" then
     	redis:get("sticker:photo")  
         load_document(msg.reply_id, toimage, msg)
     end
 end
 return {
   patterns = {
-	"^[!/](tophoto)$",
+	"^(عکس)$",
 	"%[(document)%]"
   },
   run = run,
