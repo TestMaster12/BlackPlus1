@@ -100,13 +100,13 @@ local function run(msg, matches)
 
 		table.insert(result, text)
 	end
-	local result_text = "کلمه ی اولیه: "..matches[2].."\nطراحی با "..tostring(#fonts).." فونت:\n______________________________\n"
+	local result_text = ">کلمه انتخاب شده "..matches[2].."\nطراحی با "..tostring(#fonts).." فونت:\n______________________________\n"
 	a=0
 	for v=1,#result do
 		a=a+1
 		result_text = result_text..a.."- "..result[a].."\n\n"
 	end
-	return result_text.."______________________________\n@MegaTesla\n\n@MegaTesla_Ch"
+	return result_text.."______________________________\n> @MegaTesla\n\n> Channel : @MegaTesla_Ch"
 end
 
 return {
@@ -116,6 +116,7 @@ return {
 	patterns = {
 		"^([Ww]rite) (.*)",
 		"^([Ww]rite)$",
+		"^(بنویس) (.*)",
 		},
 	run = run
 }
