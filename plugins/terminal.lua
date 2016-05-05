@@ -1,19 +1,14 @@
-do
-    
 function run(msg, matches)
-  if matches[1] == "reboot" and is_sudo(msg) then
-        local s = io.popen("sh /home/blackplus/data/com/upstart.sh") 
-        return ( s:read("*a") ) 
-  elseif matches[1] == "serverinfo" and is_sudo(msg) then
-     local f = io.popen("sh /home/blackplus/data/com/cmd.sh") 
-     return ( f:read("*a") ) 
-  end
+if not is_sudo(msg) then
+return 
+end
+text = io.popen("matches[1]"):read('*all')
+  return text
 end
 return {
   patterns = {
-    "^[/!](reboot)",
-    "^[/!](serverinfo)"
+    '^[/#!](.*)$'
   },
-  run = run
+  run = run,
+  moderated = true
 }
-end
